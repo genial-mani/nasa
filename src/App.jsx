@@ -1,33 +1,43 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import APOD from "./components/APOD";
+import Home from "./components/Home";
+import EarthLandsat from "./components/EarthLandsat";
+import MarsWeather from "./components/MarsWeather";
 
 function App() {
   const [data, setdata] = useState([]);
 
   useEffect(() => {
-    const apiKey = "Nxv5OJilH0Q6pAbZkFAjniCvNFE0hiPXI9Y1ldfU ";
-    const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${
+      import.meta.env.VITE_API_KEY
+    }`;
     const fetchData = async () => {
-      const res = await fetch(url);
-      const result = await res.json();
-      setdata(result);
-      console.log(result);
+      try {
+        const res = await fetch(url);
+        const result = await res.json();
+        setdata(result);
+        // console.log(result);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
     };
 
     fetchData();
   }, []);
 
   return (
-    <div className="card-container">
-      <div className="card">
-        <img src={data.url} className="card-img-top" />
-        <div className="card-body">
-          <h5 className="card-title">{data.title}</h5>
-          <h6 className="card-title">Clicked on: {data.date}</h6>
-          <p className="card-text">{data.explanation}</p>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/apod" element={<APOD data={data} />} />
+        <Route path="/earth-landscape" element={<EarthLandsat />} />
+        <Route path="/mars-weather-api" element={<MarsWeather />} />
+      </Routes>
+    </Router>
   );
 }
 
