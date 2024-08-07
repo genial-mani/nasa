@@ -6,13 +6,13 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-slate-800 text-slate-300 rounded-full p-5  mt-5  fixed mx-auto top-2 z-10" >
       <div className="container-fluid flex gap-10 justify-between">
-        <Link className="navbar-brand" to={"/"}>
+        <Link className="navbar-brand" to={"/home"}>
           SpaceXplorer
         </Link>
         <div className="remaining-navbar" id="navbarNav">
           <ul className="navbar-nav flex gap-10">
             <li className="nav-item">
-              <Link className="nav-link active" to={"/apod"}>
+              <Link className="nav-link active" to={"/"}>
                 APOD
               </Link>
             </li>

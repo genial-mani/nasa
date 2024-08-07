@@ -35,8 +35,8 @@ function App() {
       <OrbitSpace>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/apod" element={<APOD data={data} />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<APOD data={data} />} />
         <Route path="/earth-landscape" element={<EarthLandsat />} />
         <Route path="/mars-weather-api" element={<MarsWeather />} />
       </Routes>
