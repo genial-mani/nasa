@@ -10,7 +10,7 @@ const MarsWeather = () => {
           import.meta.env.VITE_API_KEY
         }&feedtype=json&ver=1.0`;
         const res = await fetch(url);
-        const result = await res?.json();
+        const result = await res?.json(); 
         setData(result);
         console.log(data);
       };
