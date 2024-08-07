@@ -6,6 +6,7 @@ import APOD from "./components/APOD";
 import Home from "./components/Home";
 import EarthLandsat from "./components/EarthLandsat";
 import MarsWeather from "./components/MarsWeather";
+import { OrbitSpace } from "orbit-space";
 
 function App() {
   const [data, setdata] = useState([]);
@@ -29,7 +30,9 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
+      <OrbitSpace>
+      <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -38,6 +41,8 @@ function App() {
         <Route path="/mars-weather-api" element={<MarsWeather />} />
       </Routes>
     </Router>
+      </OrbitSpace>
+    </>
   );
 }
 
