@@ -19,25 +19,25 @@ const EarthLandsat = () => {
 
   useEffect(() => {
     const fetchImage = async () => {
-      if (details.longitude && details.latitude && details.date) {
+      if (details?.longitude && details?.latitude && details?.date) {
         try {
           const proxyUrl = "https://cors-anywhere.herokuapp.com/";
           const targetUrl = `https://api.nasa.gov/planetary/earth/assets?lon=${parseFloat(
-            details.longitude
-          )}&lat=${parseFloat(details.latitude)}&date=${details.date}&dim=${
-            details.dim
+            details?.longitude
+          )}&lat=${parseFloat(details?.latitude)}&date=${details?.date}&dim=${
+            details?.dim
           }&api_key=${import.meta.env.VITE_API_KEY}`;
           const res = await fetch(proxyUrl + targetUrl);
-          if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
+          if (!res?.ok) {
+            throw new Error(`HTTP error! status: ${res?.status}`);
           }
-          const result = await res.json();
+          const result = await res?.json();
           setData(result);
-          if (!result.url) {
+          if (!result?.url) {
             setError("No Images. Try changing the values.");
           }
         } catch (error) {
-          setError(error.message);
+          setError(error?.message);
           console.error("Error fetching data: ", error);
         }
       }
@@ -107,7 +107,7 @@ const EarthLandsat = () => {
         </div>
       </form>
       <div className="img-div">
-        {data.url && <img className="img" src={data.url} alt="Earth Imagery" />}
+        {data?.url && <img className="img" src={data?.url} alt="Earth Imagery" />}
       </div>
     </section>
   );
