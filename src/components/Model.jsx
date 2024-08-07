@@ -7,9 +7,11 @@ const Model = ({ path }) => {
   const ref = useRef();
 
   useFrame(() => {
-    ref.current.rotation.x += 0.005;
-    ref.current.rotation.y += 0.005;
-    ref.current.rotation.z += 0.005;
+    if (ref.current) {
+      ref.current.rotation.x += 0.005;
+      ref.current.rotation.y += 0.005;
+      ref.current.rotation.z += 0.005;
+    }
   });
 
   return <primitive ref={ref} object={scene} />;

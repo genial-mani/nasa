@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Model from './Model'; // Adjust the import path as necessary
+import Model from './Model';
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
           <Suspense fallback={null}>
             <ambientLight intensity={5} />
             <directionalLight position={[0, 0, 0]} />
-            <Model path="/public/low-polyish_satellite/scene.gltf" />
+            <Model path="/low-polyish_satellite/scene.gltf" />
             <OrbitControls />
           </Suspense>
         </Canvas>
