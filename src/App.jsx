@@ -12,11 +12,11 @@ function App() {
   const [data, setdata] = useState([]);
 
   useEffect(() => {
-    const url = `https://api.nasa.gov/planetary/apod?api_key=${
-      import.meta.env.VITE_API_KEY
-    }`;
     const fetchData = async () => {
       try {
+        const url = `https://api.nasa.gov/planetary/apod?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`;
         const res = await fetch(url);
         const result = await res.json();
         setdata(result);
@@ -27,12 +27,12 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, []); 
 
   return (
     <>
-      <OrbitSpace>
       <Router>
+      <OrbitSpace>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,8 +40,8 @@ function App() {
         <Route path="/earth-landscape" element={<EarthLandsat />} />
         <Route path="/mars-weather-api" element={<MarsWeather />} />
       </Routes>
-    </Router>
       </OrbitSpace>
+    </Router>
     </>
   );
 }
